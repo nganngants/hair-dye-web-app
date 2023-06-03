@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 function App() {
-  const [selectedColor, setSelectedColor] = useState('');
+  const [selectedColor, setSelectedColor] = useState('#000000');
   const [selectedImage, setSelectedImage] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
   const [dyedImage, setDyedImage] = useState(null);
@@ -12,10 +12,12 @@ function App() {
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
-    setSelectedImage(file);
-    setPreviewImage(URL.createObjectURL(file));
+    if(file!=null)
+    {
+      setSelectedImage(file);
+      setPreviewImage(URL.createObjectURL(file));
+    }
   };
-
   const handleDyeClick = () => {
     if (!selectedColor || !selectedImage) {
       alert('Please select both a color and an image.');
@@ -23,6 +25,7 @@ function App() {
     }
 
     const formData = new FormData();
+    console.log(selectedColor);
     formData.append('color', selectedColor);
     formData.append('image', selectedImage);
 
@@ -43,39 +46,47 @@ function App() {
   return (
     <div className='App'>
       <h1>Hair Dye App</h1>
-      <div className='setting'>
-        <div className='selectColor'>
-          <label className='custom-file'>
-            Select Color
-            <input
-              type="color"
-              value={selectedColor}
-              onChange={handleColorChange}
-              />
-          </label>
-        </div>
-      </div>
-      <div>
-        <label className='selectImage'>
-          Select Image
-          <input type="file" accept="image/*" onChange={handleImageChange} />
-        </label>
-      </div>
-      <div className='display'>
-        {previewImage && (
-          <div>
-            <h2>Selected Image:</h2>
-            <img src={previewImage} alt="Selected" style={{ maxWidth: '300px' }} />
+      
+      <div  className='display'>
+          <div className='flex-item'>
+            <div className='previewImage'>
+            <h2>Your image:</h2>
+                <label className='button-13' id='selectImage'>
+                  Select an image
+                  <input type="file" accept="image/*" onChange={handleImageChange} />
+                </label>
+            </div>
+            <div className='Image'>
+            {previewImage && (
+              <img src={previewImage} alt="Selected" style={{ maxWidth: '300px' }} />
+              )}
+            </div>
+
           </div>
-        )}
-        {dyedImage && (
-          <div>
-            <h2>Dyed Image:</h2>
-            <img src={dyedImage} alt="Dyed" style={{ maxWidth: '300px' }} />
+          <div className='setting'>
+          <div className='selectColor'>
+            <label className='custom-file'>
+              Select Color
+              <input
+                type="color"
+                value={selectedColor}
+                onChange={handleColorChange}
+                />
+            </label>
           </div>
-        )}
+          <button className='button-30' id='butDye' onClick={handleDyeClick}>Dye</button>
       </div>
-      <button id='butDye' onClick={handleDyeClick}>Dye</button>
+          <div className='dyeImage'>
+            <div className='head2'>
+              <h2 >Dyed Image:</h2>
+            </div>
+            <div className='Image'>
+            {dyedImage && (
+              <img src={dyedImage} alt="Dyed" style={{ maxWidth: '300px' }} />
+              )}
+            </div>
+          </div>
+      </div>
     </div>
   );
 }

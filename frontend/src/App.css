@@ -1,42 +1,183 @@
 html{
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(to bottom,#fff,#1783e7);
+  background-color: #E5E0FF;
+  
 }
 .App{
   text-align: center;
- align-content: center;
+  align-content: center;
 }
 input[type="file"] {
   display: none;
+  background-color: #FFF2F2;
 }
 input[type="color"]{
   margin-left: 10px;
-  border: 2px;
+  border: 4px;
+  border-style: ridge;
+  border-color: #8EA7E9;
+  border-radius: 8px;
 }
 .selectColor{
-  border: 1px solid #ccc;
-  display: inline-block;
+  display: inline-block; 
   padding: 6px 12px;
   cursor: pointer;
+  font-family: 'Lato';
+  font-size: 20px;
+  font-weight: 600;
+  color: #8EA7E9
 }
 .custom-file{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-.setting{
+.previewImage{
   display: flex;
   flex-direction: row;
+  margin-bottom: 10px;
 }
-.selectImage{
+
+#selectImage{
   border: 1px solid #ccc;
-  display: inline-block;
-  padding: 6px 12px;
+  display: inline-block; 
+  padding: 6px 10px;
   cursor: pointer;
+  margin:auto;
+  font-family: 'Lato';
+  background-color: #8EA7E9;
+  color:#FFF2F2;
 }
 .display{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  padding:40px;
 } 
+h1{
+  color:#7286D3;
+  font-family: 'Montserrat';
+     font-weight: 800;
+     line-height: 1em;
+     font-size: 80px;
+  background-color: #E5E0FF;
+  padding:20px;
+  margin-top:0;
+}
+h2{
+  text-align: left;
+  font-family: 'Lato';
+  font-size: 24px;
+  line-height: 1px;
+  color:#7286D3;
+  margin-left:90px;
+}
+.head2{
+  margin-bottom:30px;
+  justify-content: center;
+}
+.setting{
+  margin:20px;
+  display: flex;
+  padding:30px 20px;
+  flex-direction: column;
+  justify-content: space-around;
+  align-self: flex-start;
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+  /* box-shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px, rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px; */
+}
+.flex-item{
+  flex-grow:1;
+  flex-basis:0;
+  flex-shrink:0;
+}
+button#butDye{
+  margin:auto;
+  margin-top: 10px;
+  flex-grow:0;
+}
+.dyeImage{
+  flex-grow:1;
+  flex-basis:0;
+  flex-shrink:0;
+}
+
+/* CSS */
+.button-30{
+  align-items: center;
+  appearance: none;
+  background-color: #FFF2F2;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395A;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.button-30:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.button-30:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button-30:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+/* CSS */
+.button-13 {
+  background-color: #fff;
+  border: 1px solid #d5d9d9;
+  border-radius: 8px;
+  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+  box-sizing: border-box;
+  color: #0f1111;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Amazon Ember",sans-serif;
+  font-size: 13px;
+  line-height: 29px;
+  padding: 0 10px 0 11px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  /* width: 100px; */
+}
+
+.button-13:hover {
+  background-color: #f7fafa;
+}
+
+.button-13:focus {
+  border-color: #008296;
+  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+  outline: 0;
+}
