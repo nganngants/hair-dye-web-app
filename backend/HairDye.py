@@ -63,6 +63,7 @@ class HairDye():
       parsing = out.squeeze(0).cpu().numpy().argmax(0)
       self.vis_parsing_maps(image, parsing, stride=1, save_im=True, save_path=save_path)
       return parsing
+    
   def sharpen(self,img):
     img = img * 1.0
     gauss_out = gaussian(img, sigma=5, channel_axis=0)
@@ -81,6 +82,24 @@ class HairDye():
     img_out = img_out * 255
     return np.array(img_out, dtype=np.uint8)
   
+  def change_v(self, v, mask, target):
+    v_mean = np.sum(v * mask) / np.sum(mask)
+    alpha = target / v_mean
+    x = v / 255
+    x = 1 - (1 - x) ** alpha
+    v[:] = x * 255
+  
+  def recolor(self, img, mask, color=(0x40, 0x66, 0x66)):
+    color = np.array(color, dtype='uint8', ndmin=3)
+    img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+    color_hsv = cv2.cvtColor(color, cv2.COLOR_BGR2HSV)
+    img_hsv[..., 0] = color_hsv[..., 0]
+    self.change_v(img_hsv[..., 2:], mask, color_hsv[..., 2:])
+    self.change_v(img_hsv[..., 1:2], mask, color_hsv[..., 1:2])
+    hair = cv2.cvtColor(img_hsv, cv2.COLOR_HSV2BGR) * mask
+    origin = img * (1 - mask)
+    img = (origin + hair).astype(np.uint8)
+    return img
   
   def hair(self,image, parsing, part=17, color=[10, 250, 10]):
       if color.startswith('#'):
@@ -91,22 +110,25 @@ class HairDye():
           # Assume color is a list of RGB values
           b, g, r = color
 
-      tar_color = np.zeros_like(image)
-      tar_color[:, :, 0] = b
-      tar_color[:, :, 1] = g
-      tar_color[:, :, 2] = r
+      # tar_color = np.zeros_like(image)
+      # tar_color[:, :, 0] = b
+      # tar_color[:, :, 1] = g
+      # tar_color[:, :, 2] = r
 
-      image_hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-      tar_hsv = cv2.cvtColor(tar_color, cv2.COLOR_BGR2HSV)
-      image_hsv[:, :, 0:1] = tar_hsv[:, :, 0:1]
+      # image_hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+      # tar_hsv = cv2.cvtColor(tar_color, cv2.COLOR_BGR2HSV)
+      # image_hsv[:, :, 0:1] = tar_hsv[:, :, 0:1]
 
-      changed = cv2.cvtColor(image_hsv, cv2.COLOR_HSV2BGR)
+      # changed = cv2.cvtColor(image_hsv, cv2.COLOR_HSV2BGR)
 
-      if part == 17:
-          changed = self.sharpen(changed)
+      # if part == 17:
+      #     changed = self.sharpen(changed)
 
+      # changed[parsing != part] = image[parsing != part]
+      mask = np.expand_dims(np.array(parsing == part).astype('int64'), axis=-1)
+      changed = self.recolor(image, mask, color=(b,g,r)) 
+      changed = self.sharpen(changed) 
       changed[parsing != part] = image[parsing != part]
-
       return changed
   
   def predict(self,img,color):
@@ -116,8 +138,9 @@ class HairDye():
     new_img = None
     new_img = self.hair(img, parsing,part=17,color=color)
     return new_img
-import pickle
-hairdye = HairDye()
-# Unpickle the object from the file
-with open('HairDye.pkl', 'wb') as file:
-      pickle.dump(hairdye, file)
+if __name__ == '__main__':
+  import pickle
+  hairdye = HairDye()
+  # Unpickle the object from the file
+  with open('HairDye.pkl', 'wb') as file:
+        pickle.dump(hairdye, file)
