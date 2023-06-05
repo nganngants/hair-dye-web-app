@@ -13,6 +13,8 @@ def dye_hair():
 
     # Convert image to numpy array
     pil_image = Image.open(image)
+    if pil_image.format=="PNG":
+       pil_image = pil_image.convert("RGB")
     numpy_image = np.array(pil_image)
 
     # Pass the color and image to the HairDye model

@@ -45,13 +45,17 @@ function App() {
 
   return (
     <div className='App'>
-      <h1>Hair Dye App</h1>
+      <h1 className='sweet-title'>
+        <span data-text='Hair Dye App'> 
+          Hair Dye App
+        </span>
+        </h1>
       
       <div  className='display'>
           <div className='flex-item'>
             <div className='previewImage'>
             <h2>Your image:</h2>
-                <label className='button-13' id='selectImage'>
+                <label className='button-4' id='selectImage'>
                   Select an image
                   <input type="file" accept="image/*" onChange={handleImageChange} />
                 </label>
