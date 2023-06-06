@@ -9,11 +9,29 @@
 ## Overview
 
 This is final project for Computational Thinking course at UIT - CS117.N21.KHTN
+### Course info
+* **Course Name**: Computational Thinking
+* **Course Code**: CS117
+* **Class**: CS117.N21.KHTN
+* **Academic Year**: 2022-2023
+* **Lecturer**: Dr.Ngo Duc Thanh
+### Member
+| STT    | MSSV          | Họ và Tên              | Github                                               | Email                   |
+| ------ |:-------------:| ----------------------:|-----------------------------------------------------:|-------------------------:
+| 1      | 21520069      | Võ Trần Thu Ngân     |https://github.com/nganngants                     |20522087@gm.uit.edu.vn   |
+| 2      | 21520474      | Lê Hoài Thương     |https://github.com/Chirox03                    |20520481@gm.uit.edu.vn   |
+| 3      | 21522034      | Nguyễn Hoàng Hải       |https://github.com/SKN443                         |21522034@gm.uit.edu.vn   |
+| 4      | 21522282      | Lê Thị Liên          |https://github.com/lltlien                        |21522282@gm.uit.edu.vn   |
+| 5      | 21522407      | Phan Trọng Nhân      |   https://github.com/PTN407                       |21522407@gm.uit.edu.vn   |
+## Project
+### Project preview
+![Alt text](image.png)
 
-## Run project
+
+### Run project
 Run both backend and frontend:
 
-### Frontend:
+#### Frontend:
 
 * Make sure to install all packages first:
     ```
@@ -26,7 +44,7 @@ Run both backend and frontend:
     npm start
     ```
 
-### Backend:
+#### Backend:
 * Create virtual enviroment:
     ```
     cd backend
