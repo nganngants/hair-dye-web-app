@@ -6,9 +6,23 @@
 
 # Virtual Hair Dye Application
 
+![Alt text](image.png)
+
 ## Overview
 
 This is final project for Computational Thinking course at UIT - CS117.N21.KHTN
+
+### Usage
+
+This application allows you to try out different hair colors.
+
+* Upload a portrait image of yourself
+* Choose a color 
+* Press 'Dye'
+
+**Notes**: This application may not function correctly if you upload an image that includes animals, multiple people, or individuals without hair.
+
+
 ### Course info
 * **Course Name**: Computational Thinking
 * **Course Code**: CS117
@@ -23,10 +37,8 @@ This is final project for Computational Thinking course at UIT - CS117.N21.KHTN
 | 3      | 21522034      | Nguyễn Hoàng Hải|https://github.com/SKN443 |21522034@gm.uit.edu.vn   |
 | 4      | 21522282      | Lê Thị Liên |https://github.com/lltlien  |21522282@gm.uit.edu.vn   |
 | 5      | 21522407      | Phan Trọng Nhân | https://github.com/PTN407 |21522407@gm.uit.edu.vn   |
-## Project
-### Project preview
-![Alt text](image.png)
 
+## Project
 
 ### Run project
 Run both backend and frontend:
