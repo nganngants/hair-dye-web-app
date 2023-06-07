@@ -66,7 +66,7 @@ Run both backend and frontend:
 * Make sure to install all packages in the virtual enviroment:
 
     ```
-    pip install -r requirement.txt
+    pip install -r requirements.txt
     ```
 * Run backend:
     ```
