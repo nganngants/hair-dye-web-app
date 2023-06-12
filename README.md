@@ -57,7 +57,7 @@ Run both backend and frontend:
     ```
 
 #### Backend:
-* Create virtual enviroment:
+* Create virtual environment:
     ```
     cd backend
     py -m venv env
