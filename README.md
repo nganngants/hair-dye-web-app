@@ -4,7 +4,7 @@
   </a>
 </p>
 
-# Virtual Hair Dye Application
+# Virtual Hair Dye Try-on Application
 
 ![Alt text](image.png)
 
